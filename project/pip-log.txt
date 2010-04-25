@@ -1,0 +1,65 @@
+Unpacking /Users/james/projects/fab_test/zoo/deploy/requirements_all.txt
+  Cannot unpack file /Users/james/projects/fab_test/zoo/deploy/requirements_all.txt (downloaded from /var/folders/+m/+mgoP1jBEEWLvbmiN2u78E+++TI/-Tmp-/pip-yYXI5p-build, content-type: text/plain); cannot detect archive format
+Cannot determine archive format of /var/folders/+m/+mgoP1jBEEWLvbmiN2u78E+++TI/-Tmp-/pip-yYXI5p-build
+Exception information:
+Traceback (most recent call last):
+  File "/Users/james/.virtualenvs/fab_test/lib/python2.5/site-packages/pip-0.6.1-py2.5.egg/pip.py", line 482, in main
+    self.run(options, args)
+  File "/Users/james/.virtualenvs/fab_test/lib/python2.5/site-packages/pip-0.6.1-py2.5.egg/pip.py", line 675, in run
+    requirement_set.install_files(finder, force_root_egg_info=self.bundle)
+  File "/Users/james/.virtualenvs/fab_test/lib/python2.5/site-packages/pip-0.6.1-py2.5.egg/pip.py", line 2429, in install_files
+    self.unpack_url(url, location, self.is_download)
+  File "/Users/james/.virtualenvs/fab_test/lib/python2.5/site-packages/pip-0.6.1-py2.5.egg/pip.py", line 2504, in unpack_url
+    self.unpack_file(source, location, content_type, link)
+  File "/Users/james/.virtualenvs/fab_test/lib/python2.5/site-packages/pip-0.6.1-py2.5.egg/pip.py", line 2652, in unpack_file
+    raise InstallationError('Cannot determine archive format of %s' % location)
+InstallationError: Cannot determine archive format of /var/folders/+m/+mgoP1jBEEWLvbmiN2u78E+++TI/-Tmp-/pip-yYXI5p-build
+------------------------------------------------------------
+/Users/james/.virtualenvs/fab_test/bin/pip run on Sun Apr 25 16:33:48 2010
+Unpacking /Users/james/projects/fab_test/zoo/deploy/requirements_all.txt
+  Cannot unpack file /Users/james/projects/fab_test/zoo/deploy/requirements_all.txt (downloaded from /var/folders/+m/+mgoP1jBEEWLvbmiN2u78E+++TI/-Tmp-/pip-91OArp-build, content-type: text/plain); cannot detect archive format
+Cannot determine archive format of /var/folders/+m/+mgoP1jBEEWLvbmiN2u78E+++TI/-Tmp-/pip-91OArp-build
+Exception information:
+Traceback (most recent call last):
+  File "/Users/james/.virtualenvs/fab_test/lib/python2.5/site-packages/pip-0.6.1-py2.5.egg/pip.py", line 482, in main
+    self.run(options, args)
+  File "/Users/james/.virtualenvs/fab_test/lib/python2.5/site-packages/pip-0.6.1-py2.5.egg/pip.py", line 675, in run
+    requirement_set.install_files(finder, force_root_egg_info=self.bundle)
+  File "/Users/james/.virtualenvs/fab_test/lib/python2.5/site-packages/pip-0.6.1-py2.5.egg/pip.py", line 2429, in install_files
+    self.unpack_url(url, location, self.is_download)
+  File "/Users/james/.virtualenvs/fab_test/lib/python2.5/site-packages/pip-0.6.1-py2.5.egg/pip.py", line 2504, in unpack_url
+    self.unpack_file(source, location, content_type, link)
+  File "/Users/james/.virtualenvs/fab_test/lib/python2.5/site-packages/pip-0.6.1-py2.5.egg/pip.py", line 2652, in unpack_file
+    raise InstallationError('Cannot determine archive format of %s' % location)
+InstallationError: Cannot determine archive format of /var/folders/+m/+mgoP1jBEEWLvbmiN2u78E+++TI/-Tmp-/pip-91OArp-build
+------------------------------------------------------------
+/Users/james/.virtualenvs/fab_test/bin/pip run on Sun Apr 25 16:34:06 2010
+Unpacking /Users/james/projects/fab_test/zoo/deploy/requirements_dev.txt
+  Cannot unpack file /Users/james/projects/fab_test/zoo/deploy/requirements_dev.txt (downloaded from /var/folders/+m/+mgoP1jBEEWLvbmiN2u78E+++TI/-Tmp-/pip-kjinSg-build, content-type: text/plain); cannot detect archive format
+Cannot determine archive format of /var/folders/+m/+mgoP1jBEEWLvbmiN2u78E+++TI/-Tmp-/pip-kjinSg-build
+Exception information:
+Traceback (most recent call last):
+  File "/Users/james/.virtualenvs/fab_test/lib/python2.5/site-packages/pip-0.6.1-py2.5.egg/pip.py", line 482, in main
+    self.run(options, args)
+  File "/Users/james/.virtualenvs/fab_test/lib/python2.5/site-packages/pip-0.6.1-py2.5.egg/pip.py", line 675, in run
+    requirement_set.install_files(finder, force_root_egg_info=self.bundle)
+  File "/Users/james/.virtualenvs/fab_test/lib/python2.5/site-packages/pip-0.6.1-py2.5.egg/pip.py", line 2429, in install_files
+    self.unpack_url(url, location, self.is_download)
+  File "/Users/james/.virtualenvs/fab_test/lib/python2.5/site-packages/pip-0.6.1-py2.5.egg/pip.py", line 2504, in unpack_url
+    self.unpack_file(source, location, content_type, link)
+  File "/Users/james/.virtualenvs/fab_test/lib/python2.5/site-packages/pip-0.6.1-py2.5.egg/pip.py", line 2652, in unpack_file
+    raise InstallationError('Cannot determine archive format of %s' % location)
+InstallationError: Cannot determine archive format of /var/folders/+m/+mgoP1jBEEWLvbmiN2u78E+++TI/-Tmp-/pip-kjinSg-build
+------------------------------------------------------------
+/Users/james/.virtualenvs/fab_test/bin/pip run on Sun Apr 25 16:43:25 2010
+Exception:
+Traceback (most recent call last):
+  File "/Users/james/.virtualenvs/fab_test/lib/python2.5/site-packages/pip-0.6.1-py2.5.egg/pip.py", line 482, in main
+    self.run(options, args)
+  File "/Users/james/.virtualenvs/fab_test/lib/python2.5/site-packages/pip-0.6.1-py2.5.egg/pip.py", line 673, in run
+    for req in parse_requirements(filename, finder=finder, options=options):
+  File "/Users/james/.virtualenvs/fab_test/lib/python2.5/site-packages/pip-0.6.1-py2.5.egg/pip.py", line 4070, in parse_requirements
+    filename, content = get_file_content(filename, comes_from=comes_from)
+  File "/Users/james/.virtualenvs/fab_test/lib/python2.5/site-packages/pip-0.6.1-py2.5.egg/pip.py", line 4060, in get_file_content
+    f = open(url)
+IOError: [Errno 2] No such file or directory: 'deploy/requirements_dev.txt'

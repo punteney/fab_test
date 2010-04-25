@@ -1,0 +1,124 @@
+Downloading/unpacking ipython (from -r deploy/requirements_all.txt (line 2))
+  Getting page http://pypi.python.org/simple/ipython
+  URLs to search for versions for ipython (from -r deploy/requirements_all.txt (line 2)):
+  * http://pypi.python.org/simple/ipython/
+  Getting page http://ipython.scipy.org
+  Getting page http://ipython.scipy.org/dist/0.10
+  Getting page http://ipython.scipy.org/dist/0.9.1
+  Getting page http://ipython.scipy.org/dist/0.8.4
+  Getting page http://ipython.scipy.org/dist/old/0.9
+  Getting page http://ipython.scipy.org/dist
+  Analyzing links from page http://pypi.python.org/simple/ipython/
+    Skipping link http://pypi.python.org/packages/2.5/i/ipython/ipython-0.7.3-py2.5.egg#md5=76df2f3f9dcd0a4f087c558c9a6f94a4 (from http://pypi.python.org/simple/ipython/); unknown archive format: .egg
+    Skipping link http://ipython.scipy.org (from http://pypi.python.org/simple/ipython/); not a file
+    Skipping link http://ipython.scipy.org/dist/0.10 (from http://pypi.python.org/simple/ipython/); unknown archive format: .10
+    Skipping link http://ipython.scipy.org/dist/0.9.1 (from http://pypi.python.org/simple/ipython/); unknown archive format: .1
+    Skipping link http://ipython.scipy.org/dist/0.8.4 (from http://pypi.python.org/simple/ipython/); unknown archive format: .4
+    Skipping link http://ipython.scipy.org/dist/old/0.9 (from http://pypi.python.org/simple/ipython/); unknown archive format: .9
+    Skipping link http://ipython.scipy.org/dist (from http://pypi.python.org/simple/ipython/); not a file
+    Skipping link http://launchpad.net/ipython (from http://pypi.python.org/simple/ipython/); not a file
+    Found link http://ipython.scipy.org/svn/ipython/ipython/trunk#egg=ipython-dev (from http://pypi.python.org/simple/ipython/), version: dev
+  Analyzing links from page http://ipython.scipy.org
+  Analyzing links from page http://ipython.scipy.org/dist/0.10/
+    Skipping link http://ipython.scipy.org/dist/0.10/?C=N;O=D (from http://ipython.scipy.org/dist/0.10/); unknown archive format: .10
+    Skipping link http://ipython.scipy.org/dist/0.10/?C=M;O=A (from http://ipython.scipy.org/dist/0.10/); unknown archive format: .10
+    Skipping link http://ipython.scipy.org/dist/0.10/?C=S;O=A (from http://ipython.scipy.org/dist/0.10/); unknown archive format: .10
+    Skipping link http://ipython.scipy.org/dist/0.10/?C=D;O=A (from http://ipython.scipy.org/dist/0.10/); unknown archive format: .10
+    Skipping link http://ipython.scipy.org/dist/ (from http://ipython.scipy.org/dist/0.10/); not a file
+    Skipping link http://ipython.scipy.org/dist/0.10/ipython-0.10-py2.5.egg (from http://ipython.scipy.org/dist/0.10/); unknown archive format: .egg
+    Skipping link http://ipython.scipy.org/dist/0.10/ipython-0.10-py2.6.egg (from http://ipython.scipy.org/dist/0.10/); unknown archive format: .egg
+    Skipping link http://ipython.scipy.org/dist/0.10/ipython-0.10-py25.noarch.rpm (from http://ipython.scipy.org/dist/0.10/); unknown archive format: .rpm
+    Skipping link http://ipython.scipy.org/dist/0.10/ipython-0.10-py26.noarch.rpm (from http://ipython.scipy.org/dist/0.10/); unknown archive format: .rpm
+    Found link http://ipython.scipy.org/dist/0.10/ipython-0.10.tar.gz (from http://ipython.scipy.org/dist/0.10/), version: 0.10
+    Skipping link http://ipython.scipy.org/dist/0.10/ipython-0.10.win32-setup.exe (from http://ipython.scipy.org/dist/0.10/); unknown archive format: .exe
+  Analyzing links from page http://ipython.scipy.org/dist/0.9.1/
+    Skipping link http://ipython.scipy.org/dist/0.9.1/?C=N;O=D (from http://ipython.scipy.org/dist/0.9.1/); unknown archive format: .1
+    Skipping link http://ipython.scipy.org/dist/0.9.1/?C=M;O=A (from http://ipython.scipy.org/dist/0.9.1/); unknown archive format: .1
+    Skipping link http://ipython.scipy.org/dist/0.9.1/?C=S;O=A (from http://ipython.scipy.org/dist/0.9.1/); unknown archive format: .1
+    Skipping link http://ipython.scipy.org/dist/0.9.1/?C=D;O=A (from http://ipython.scipy.org/dist/0.9.1/); unknown archive format: .1
+    Skipping link http://ipython.scipy.org/dist/0.9.1/ipython-0.9.1-py2.4.egg (from http://ipython.scipy.org/dist/0.9.1/); unknown archive format: .egg
+    Skipping link http://ipython.scipy.org/dist/0.9.1/ipython-0.9.1-py2.5.egg (from http://ipython.scipy.org/dist/0.9.1/); unknown archive format: .egg
+    Found link http://ipython.scipy.org/dist/0.9.1/ipython-0.9.1.tar.gz (from http://ipython.scipy.org/dist/0.9.1/), version: 0.9.1
+    Skipping link http://ipython.scipy.org/dist/0.9.1/ipython-0.9.1.win32-setup.exe (from http://ipython.scipy.org/dist/0.9.1/); unknown archive format: .exe
+  Analyzing links from page http://ipython.scipy.org/dist/0.8.4/
+    Skipping link http://ipython.scipy.org/dist/0.8.4/?C=N;O=D (from http://ipython.scipy.org/dist/0.8.4/); unknown archive format: .4
+    Skipping link http://ipython.scipy.org/dist/0.8.4/?C=M;O=A (from http://ipython.scipy.org/dist/0.8.4/); unknown archive format: .4
+    Skipping link http://ipython.scipy.org/dist/0.8.4/?C=S;O=A (from http://ipython.scipy.org/dist/0.8.4/); unknown archive format: .4
+    Skipping link http://ipython.scipy.org/dist/0.8.4/?C=D;O=A (from http://ipython.scipy.org/dist/0.8.4/); unknown archive format: .4
+    Skipping link http://ipython.scipy.org/dist/0.8.4/ipython-0.8.4-py2.4.egg (from http://ipython.scipy.org/dist/0.8.4/); unknown archive format: .egg
+    Skipping link http://ipython.scipy.org/dist/0.8.4/ipython-0.8.4-py2.5.egg (from http://ipython.scipy.org/dist/0.8.4/); unknown archive format: .egg
+    Skipping link http://ipython.scipy.org/dist/0.8.4/ipython-0.8.4-py24.noarch.rpm (from http://ipython.scipy.org/dist/0.8.4/); unknown archive format: .rpm
+    Skipping link http://ipython.scipy.org/dist/0.8.4/ipython-0.8.4-py25.noarch.rpm (from http://ipython.scipy.org/dist/0.8.4/); unknown archive format: .rpm
+    Found link http://ipython.scipy.org/dist/0.8.4/ipython-0.8.4.tar.gz (from http://ipython.scipy.org/dist/0.8.4/), version: 0.8.4
+    Skipping link http://ipython.scipy.org/dist/0.8.4/ipython-0.8.4.win32-setup.exe (from http://ipython.scipy.org/dist/0.8.4/); unknown archive format: .exe
+  Analyzing links from page http://ipython.scipy.org/dist/old/0.9/
+    Skipping link http://ipython.scipy.org/dist/old/0.9/?C=N;O=D (from http://ipython.scipy.org/dist/old/0.9/); unknown archive format: .9
+    Skipping link http://ipython.scipy.org/dist/old/0.9/?C=M;O=A (from http://ipython.scipy.org/dist/old/0.9/); unknown archive format: .9
+    Skipping link http://ipython.scipy.org/dist/old/0.9/?C=S;O=A (from http://ipython.scipy.org/dist/old/0.9/); unknown archive format: .9
+    Skipping link http://ipython.scipy.org/dist/old/0.9/?C=D;O=A (from http://ipython.scipy.org/dist/old/0.9/); unknown archive format: .9
+    Skipping link http://ipython.scipy.org/dist/old/ (from http://ipython.scipy.org/dist/old/0.9/); not a file
+    Skipping link http://ipython.scipy.org/dist/old/0.9/ipython-0.9-py2.5.egg (from http://ipython.scipy.org/dist/old/0.9/); unknown archive format: .egg
+    Found link http://ipython.scipy.org/dist/old/0.9/ipython-0.9.tar.gz (from http://ipython.scipy.org/dist/old/0.9/), version: 0.9
+    Skipping link http://ipython.scipy.org/dist/old/0.9/ipython-0.9.win32-setup.exe (from http://ipython.scipy.org/dist/old/0.9/); unknown archive format: .exe
+  Analyzing links from page http://ipython.scipy.org/dist/
+    Skipping link http://ipython.scipy.org/dist/?C=N;O=D (from http://ipython.scipy.org/dist/); not a file
+    Skipping link http://ipython.scipy.org/dist/?C=M;O=A (from http://ipython.scipy.org/dist/); not a file
+    Skipping link http://ipython.scipy.org/dist/?C=S;O=A (from http://ipython.scipy.org/dist/); not a file
+    Skipping link http://ipython.scipy.org/dist/?C=D;O=A (from http://ipython.scipy.org/dist/); not a file
+    Skipping link http://ipython.scipy.org/ (from http://ipython.scipy.org/dist/); not a file
+    Skipping link http://ipython.scipy.org/dist/0.8.4/ (from http://ipython.scipy.org/dist/); unknown archive format: .4
+    Skipping link http://ipython.scipy.org/dist/0.9.1/ (from http://ipython.scipy.org/dist/); unknown archive format: .1
+    Skipping link http://ipython.scipy.org/dist/0.10/ (from http://ipython.scipy.org/dist/); unknown archive format: .10
+    Skipping link http://ipython.scipy.org/dist/0.11/ (from http://ipython.scipy.org/dist/); unknown archive format: .11
+    Skipping link http://ipython.scipy.org/dist/0.12/ (from http://ipython.scipy.org/dist/); unknown archive format: .12
+    Skipping link http://ipython.scipy.org/dist/alldeps/ (from http://ipython.scipy.org/dist/); not a file
+    Skipping link http://ipython.scipy.org/dist/ipython.el (from http://ipython.scipy.org/dist/); unknown archive format: .el
+    Skipping link http://ipython.scipy.org/dist/pyreadline-1.5-win32-setup.exe (from http://ipython.scipy.org/dist/); unknown archive format: .exe
+    Skipping link http://ipython.scipy.org/dist/pyreadline-1.5.dev_r2876-py2.5.egg (from http://ipython.scipy.org/dist/); unknown archive format: .egg
+    Skipping link http://ipython.scipy.org/dist/pyreadline-1.5.tar.gz (from http://ipython.scipy.org/dist/); wrong project name (not ipython)
+    Skipping link http://ipython.scipy.org/dist/readline-2.5.1-py2.5-macosx-10.5-i386.egg (from http://ipython.scipy.org/dist/); unknown archive format: .egg
+    Skipping link http://ipython.scipy.org/dist/readline-2.5.1.tar.gz (from http://ipython.scipy.org/dist/); wrong project name (not ipython)
+    Skipping link http://ipython.scipy.org/dist/repo-dumps/ (from http://ipython.scipy.org/dist/); not a file
+    Skipping link http://ipython.scipy.org/dist/testing/ (from http://ipython.scipy.org/dist/); not a file
+  Using version 0.10 (newest of versions: 0.10, 0.9.1, 0.9, 0.8.4, dev)
+  Downloading from URL http://ipython.scipy.org/dist/0.10/ipython-0.10.tar.gz (from http://ipython.scipy.org/dist/0.10/)
+  Running setup.py egg_info for package ipython
+    Leopard libedit detected.
+    running egg_info
+    creating pip-egg-info/ipython.egg-info
+    writing requirements to pip-egg-info/ipython.egg-info/requires.txt
+    writing pip-egg-info/ipython.egg-info/PKG-INFO
+    writing top-level names to pip-egg-info/ipython.egg-info/top_level.txt
+    writing dependency_links to pip-egg-info/ipython.egg-info/dependency_links.txt
+    writing entry points to pip-egg-info/ipython.egg-info/entry_points.txt
+    writing manifest file 'pip-egg-info/ipython.egg-info/SOURCES.txt'
+    warning: manifest_maker: standard file '-c' not found
+    reading manifest file 'pip-egg-info/ipython.egg-info/SOURCES.txt'
+    writing manifest file 'pip-egg-info/ipython.egg-info/SOURCES.txt'
+  Source in /Users/james/.virtualenvs/fab_test/build/ipython has version 0.10, which satisfies requirement ipython (from -r deploy/requirements_all.txt (line 2))
+Downloading/unpacking python-memcached (from -r deploy/requirements_all.txt (line 3))
+  Getting page http://pypi.python.org/simple/python-memcached
+  Could not fetch URL http://pypi.python.org/simple/python-memcached: timed out
+  Will skip URL http://pypi.python.org/simple/python-memcached when looking for download links for python-memcached (from -r deploy/requirements_all.txt (line 3))
+  Getting page http://pypi.python.org/simple/
+  Could not fetch URL http://pypi.python.org/simple/: timed out
+  Will skip URL http://pypi.python.org/simple/ when looking for download links for python-memcached (from -r deploy/requirements_all.txt (line 3))
+  Cannot fetch index base URL http://pypi.python.org/simple/
+  URLs to search for versions for python-memcached (from -r deploy/requirements_all.txt (line 3)):
+  * http://pypi.python.org/simple/python-memcached/
+  Getting page http://pypi.python.org/simple/python-memcached/
+  Could not fetch URL http://pypi.python.org/simple/python-memcached/: timed out
+  Will skip URL http://pypi.python.org/simple/python-memcached/ when looking for download links for python-memcached (from -r deploy/requirements_all.txt (line 3))
+  Could not find any downloads that satisfy the requirement python-memcached (from -r deploy/requirements_all.txt (line 3))
+No distributions at all found for python-memcached (from -r deploy/requirements_all.txt (line 3))
+Exception information:
+Traceback (most recent call last):
+  File "/Users/james/.virtualenvs/fab_test/lib/python2.5/site-packages/pip-0.6.1-py2.5.egg/pip.py", line 482, in main
+    self.run(options, args)
+  File "/Users/james/.virtualenvs/fab_test/lib/python2.5/site-packages/pip-0.6.1-py2.5.egg/pip.py", line 675, in run
+    requirement_set.install_files(finder, force_root_egg_info=self.bundle)
+  File "/Users/james/.virtualenvs/fab_test/lib/python2.5/site-packages/pip-0.6.1-py2.5.egg/pip.py", line 2422, in install_files
+    url = finder.find_requirement(req_to_install, upgrade=self.upgrade)
+  File "/Users/james/.virtualenvs/fab_test/lib/python2.5/site-packages/pip-0.6.1-py2.5.egg/pip.py", line 1485, in find_requirement
+    raise DistributionNotFound('No distributions at all found for %s' % req)
+DistributionNotFound: No distributions at all found for python-memcached (from -r deploy/requirements_all.txt (line 3))
