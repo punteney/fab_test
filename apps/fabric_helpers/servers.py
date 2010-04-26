@@ -308,6 +308,14 @@ class PostgresqlServer(Server):
     def code_reload(self):
         pass
 
+    def setup(self):
+        self.setup_config_files()
+        # self.create_db()
+    
+    def create_db(self):
+        run('sudo -u postgres createuser %s' % state.env.DATABASE_USER)
+        run('sudo -u postgres createdb -O %s %s' % (state.env.DATABASE_USER, state.env.DATABASE_NAME))
+
 class RabbitServer(Server):
     def __init__(self, name, packages=['rabbitmq-server'],
             start_command='/etc/init.d/rabbitmq-server start', **kwargs):

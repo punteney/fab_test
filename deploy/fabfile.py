@@ -9,6 +9,7 @@
 
 from fabric_helpers import *
 from fabric_helpers.servers import Machines, Machine, PostgresqlServer, NginxServer, ApacheServer
+from project.settings.production import DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD
 
 # The holder for the various machines that this fabfile is concerned with
 MACHINES = Machines()
@@ -31,3 +32,6 @@ env.project_name = 'zoo'
 env.project_folder_name = 'project' 
 env.project_root = os.path.join('/home/', USER, env.project_name)
 env.git_repo = 'git://github.com/punteney/fab_test.git'
+env.DATABASE_NAME = DATABASE_NAME
+env.DATABASE_USER = DATABASE_USER
+env.DATABASE_PASSWORD = DATABASE_PASSWORD

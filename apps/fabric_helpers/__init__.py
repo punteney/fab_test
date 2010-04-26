@@ -1,16 +1,5 @@
 from __future__ import with_statement
 import os
-import time
-
-#from fabric.api import hosts, run, sudo, cd
-#from fabric.state import env
-#from fabric.contrib.files import exists, append
-#from fabric.utils import warn
-#from fabric_helpers.servers import NginxServer, ApacheServer, Machines
-
-#from fabric.api import abort, cd, env, get, hide, hosts, local, prompt, \
-#    put, require, roles, run, runs_once, settings, show, sudo, warn
-
 from fabric.api import *
 from fabric.contrib.files import append, exists
 
@@ -80,6 +69,7 @@ def setup():
     install_global_python_packages()
     project_setup()
     server_config()
+    syncdb()
     
 def install_servers():
     for m in env.selected_machines:
@@ -103,6 +93,9 @@ def server_config():
     for m in env.selected_machines:
         for s in m.servers:
             s.setup()
+ 
+def syncdb():
+    run_env('export CONFIG_IDENTIFIER=production; cd %s; django-admin.py syncdb --settings=project.settings --noinput' % env.paths['live'])
     
 def create_project_paths():
     for path in env.paths.values():
@@ -118,7 +111,7 @@ def clone_repo():
     checkout_latest()
 
 def checkout_latest():
-    """Pull the latest code into the git repo and copy to a timestamped release directory"""
+    """Pull the latest code into the git repo and copy to a hashtag release directory"""
     with cd(env.paths['repo']):
         if hasattr(env, 'git_branch'):
             git_branch = run('git branch')
@@ -175,3 +168,12 @@ def symlink_release(release=None):
     if exists(project_dir):
         run('rm -rf %s' % project_dir)
     run('ln -s %s %s' % (release_dir, project_dir))
+
+def restart_servers():
+    for m in env.selected_machines:
+        for s in m.servers:
+            s.restart()
+
+# Runs the command within the virtualenv
+def run_env(cmd, *a, **kw):
+    run("source %s; %s" % (os.path.join(env.paths['v_env'], 'bin/activate'), cmd), *a, **kw)
