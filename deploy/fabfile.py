@@ -16,10 +16,13 @@ USER = 'james'
 
 #APACHE = ApacheServer('apache') # Site name should be the name of the config file
 POSTGRES = PostgresqlServer()
+APACHE = ApacheServer(sites=['django_site'])
+NGINX = NginxServer(sites=['django_site'])
 
 # Registering individual machines
 MACHINES.register(
-    Machine('173.203.86.90', ENVIRONMENTS['production'], short_name="prod", servers=[POSTGRES,])
+    Machine('173.203.86.90', ENVIRONMENTS['production'], 
+        short_name="prod", servers=[POSTGRES, APACHE, NGINX])
 )
 
 env.MACHINES = MACHINES
@@ -27,4 +30,4 @@ env.user = USER
 env.project_name = 'zoo'
 env.project_folder_name = 'project' 
 env.project_root = os.path.join('/home/', USER, env.project_name)
-env.git_repo = 'git@github.com:geniusrocket/GR-Site.git'
+env.git_repo = 'git://github.com/punteney/fab_test.git'

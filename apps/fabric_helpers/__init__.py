@@ -12,7 +12,7 @@ import time
 #    put, require, roles, run, runs_once, settings, show, sudo, warn
 
 from fabric.api import *
-from fabric.contrib.files import exists
+from fabric.contrib.files import append, exists
 
 
 ################
@@ -63,7 +63,9 @@ def fab_config(env_name):
         'releases': os.path.join(env.project_root, 'releases'),
         'v_env': os.path.join(env.project_root, 'virtual_envs', env.git_branch)
     }
+    
     env.paths['config'] = os.path.join(env.paths['live'], 'config')
+    env.paths['apps'] = os.path.join(env.paths['live'], 'apps')
     # env.project_path = os.path.join(env.paths['live'], env.project_name) # Not created in the dict as it's symlinked not an actual dir
 
 def initial_install():
@@ -77,6 +79,7 @@ def setup():
     install_servers()
     install_global_python_packages()
     project_setup()
+    server_config()
     
 def install_servers():
     for m in env.selected_machines:
@@ -96,6 +99,11 @@ def project_setup():
     install_project_requirements()
     symlink_release(release=env.release)
 
+def server_config():
+    for m in env.selected_machines:
+        for s in m.servers:
+            s.setup()
+    
 def create_project_paths():
     for path in env.paths.values():
         if not exists(path):
@@ -141,12 +149,13 @@ def setup_virtualenv(site_packages=True):
     else:
         run('virtualenv --no-site-packages %s' %  env.paths['v_env'])
 
-    # pth_file = '%s/lib/python%s/site-packages/project.pth' % (env.paths['virtual_env'], str(machines.get(env.host)['python_version']))
-    # pth_file = '%s/lib/python2.5/site-packages/project.pth' % (env.paths['virtual_env'])
-    # 
-    # append(env.project_path['live'], pth_file)
-    # append(env.project_path, pth_file)
-    # append(env.project_path+'/apps', pth_file)
+    machine = env.MACHINES.get_by_host(env.host)
+    pth_file = '%s/lib/python%s/site-packages/project.pth' % (
+            env.paths['v_env'], str(machine.python_version))
+
+    append(env.paths['live'], pth_file)
+    append(env.paths['apps'], pth_file)
+
 
 def install_project_requirements():
    """Install the required packages using pip"""
@@ -159,23 +168,10 @@ def symlink_release(release=None):
     if not release:
         # Setting environment variables to current git hasgrelease
         release = get_git_hash()
-        release_dir = os.path.join(env.paths['releases'], release)
+    release_dir = os.path.join(env.paths['releases'], release)
     
     # Linking the main project
-    project_dir = os.path.join(env.paths['live'], env.project_dir_name)
+    project_dir = os.path.join(env.paths['live'])
     if exists(project_dir):
-        run('rm %s' % project_dir)
-    run('ln -s %s %s' % (env.paths['release'], project_dir))
-    
-    # Linking the active virtual_env file
-    virtual_env_dir = os.path.join(env.paths['live'], 'virtual_env')
-    if exists(virtual_env_dir):
-        run('rm %s' % virtual_env_dir)
-    run('ln -s %s %s' % (env.paths['v_env'], virtual_env_dir))
-    
-    # Linking site-packages dir
-    # packages_dir = '%s/site-packages' % env.paths['live']
-    # if exists(packages_dir):
-    #     run('rm %s' % packages_dir)
-    # run('ln -s %s/lib/python%s/site-packages %s' % (env.paths['virtual_env'], machines.get(env.host)['python_version'], packages_dir))
-   
+        run('rm -rf %s' % project_dir)
+    run('ln -s %s %s' % (release_dir, project_dir))
