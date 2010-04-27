@@ -283,7 +283,7 @@ class NginxServer(WebServer):
             conf_files_path='/etc/nginx',
             conf_files = ['nginx.conf'],
             packages=['nginx'],
-            restart_command='/etc/init.d/nginx reload',
+            restart_command='/etc/init.d/nginx restart',
             start_command='/etc/init.d/nginx start', 
             **kwargs
         ):
