@@ -4,6 +4,42 @@ from fabric.api import *
 from fabric.contrib.files import append, exists
 
 
+##########
+# Helper functions
+##########
+
+
+def push():
+    project_update()
+    restart_servers()
+    
+def push_quick():
+    project_quick_update()
+    code_reload()
+
+def initial_install():
+    for m in env.selected_machines:
+        m.copy_ssh_keys(env.user)
+        m.install()
+    install_servers()
+    install_global_python_packages()
+    project_setup()
+    server_config()
+    restart_servers()
+
+# def delete_old_releases():
+#     releases = get_releases()
+#     # Leave the last 10 releases
+#     if len(releases) > 10:
+#         for release in releases[:-10]:
+#             delete_release(str(release))
+
+# def rollback():
+#     # This will rollback to the previous release
+#     # Any system changes will still be in effect though
+#     # installed packages, db changes, global configs, etc.
+#     symlink_release(release=set_release('20100420170116'))
+
 ################
 # Environment SETUPS
 ###############
@@ -24,6 +60,7 @@ def staging():
 def production():
     setup_environments()
     fab_config(env.ENVIRONMENTS['production'])
+
 
 def setup_environments(envs=None):
     if envs:
@@ -55,22 +92,8 @@ def fab_config(env_name):
     
     env.paths['config'] = os.path.join(env.paths['live'], 'config')
     env.paths['apps'] = os.path.join(env.paths['live'], 'apps')
-    # env.project_path = os.path.join(env.paths['live'], env.project_name) # Not created in the dict as it's symlinked not an actual dir
 
-def initial_install():
-    env.project_user = env.user
-    env.user = 'root'
-    for m in env.selected_machines:
-        m.install()
-        m.copy_ssh_keys(env.project_user)
 
-def setup():
-    install_servers()
-    install_global_python_packages()
-    project_setup()
-    server_config()
-    syncdb()
-    
 def install_servers():
     for m in env.selected_machines:
         m.install_servers()
@@ -87,6 +110,18 @@ def project_setup():
     checkout_latest()
     setup_virtualenv()
     install_project_requirements()
+    symlink_release(release=env.release)
+
+def project_update():
+    """Updates the project to the latest version, installs all requirements and applies patches"""
+    checkout_latest()
+    install_project_requirements()
+    symlink_release(release=env.release)
+    syncdb()
+
+def project_quick_update():
+    """Updates the project to the latest version, installs all requirements and applies patches"""
+    checkout_latest()
     symlink_release(release=env.release)
 
 def server_config():
@@ -108,7 +143,6 @@ def clone_repo():
         # If it exists delete it to make sure we get the correct files/repo
         run('rm -rf %s' % env.paths['repo'])
     run('git clone %s %s' % (env.git_repo, env.paths['repo']))
-    checkout_latest()
 
 def checkout_latest():
     """Pull the latest code into the git repo and copy to a hashtag release directory"""
@@ -126,12 +160,13 @@ def checkout_latest():
         run("git pull")
     if not exists(env.paths['v_env']):
         # This is a new branch so create a new virtualenv for it
-        setup_project_virtualenv()
+        setup_virtualenv()
     env.release = get_git_hash()
     env.paths['release'] = os.path.join(env.paths['releases'], env.release)    
-    run('cp -R %s %s; rm -rf %s/.git*' 
-        % (env.paths['repo'], env.paths['release'], env.paths['release']))
-    
+    if not exists(env.paths['release']):
+        run('cp -R %s %s; rm -rf %s/.git*' 
+            % (env.paths['repo'], env.paths['release'], env.paths['release']))
+
 def get_git_hash():
     with cd(env.paths['repo']):
         return run('git rev-parse HEAD')
@@ -152,9 +187,9 @@ def setup_virtualenv(site_packages=True):
 
 def install_project_requirements():
    """Install the required packages using pip"""
-   run('pip install -r %s/deploy/requirements_all.txt -E %s' % (env.paths['release'], env.paths['v_env']))
+   run_env('pip install -r %s/deploy/requirements_all.txt' % (env.paths['release']))
    if exists('%s/deploy/requirements_%s.txt' % (env.paths['release'], env.name)):
-        run('pip install -r %s/deploy/requirements_%s.txt -E %s' % (env.paths['release'], env.name, env.paths['v_env']))
+        run_env('pip install -r %s/deploy/requirements_%s.txt' % (env.paths['release'], env.name))
 
 def symlink_release(release=None):
     """Symlink our current release, uploads and settings file"""
@@ -164,15 +199,27 @@ def symlink_release(release=None):
     release_dir = os.path.join(env.paths['releases'], release)
     
     # Linking the main project
-    project_dir = os.path.join(env.paths['live'])
+    project_dir = env.paths['live']
     if exists(project_dir):
         run('rm -rf %s' % project_dir)
     run('ln -s %s %s' % (release_dir, project_dir))
+    
+    # Linking the virtual_env shortcut
+    env_dir = os.path.join(env.paths['live'], 'v_env')
+    if exists(env_dir):
+        run('rm -rf %s' % env_dir)
+    run('ln -s %s %s' % (env.paths['v_env'], env_dir))
+
 
 def restart_servers():
     for m in env.selected_machines:
         for s in m.servers:
             s.restart()
+
+def code_reload():
+    for m in env.selected_machines:
+        for s in m.servers:
+            s.code_reload()    
 
 # Runs the command within the virtualenv
 def run_env(cmd, *a, **kw):

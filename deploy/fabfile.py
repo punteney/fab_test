@@ -22,7 +22,7 @@ NGINX = NginxServer(sites=['django_site'])
 
 # Registering individual machines
 MACHINES.register(
-    Machine('173.203.86.90', ENVIRONMENTS['production'], 
+    Machine('173.203.81.80', ENVIRONMENTS['production'], 
         short_name="prod", servers=[POSTGRES, APACHE, NGINX])
 )
 

@@ -1,0 +1,64 @@
+TODO:
+    ssh-copy-id with different port than default
+    add in ports for the different servers
+    detect if config file is a symlink, if it is don't bother backing it up
+    
+
+
+
+# Installing ssh-copy-id
+sudo curl http://blog.christopherpitzer.com/wp-content/uploads/ssh-copy-id -o /usr/bin/ssh-copy-id
+sudo chmod a+x /usr/bin/ssh-copy-id
+
+# On the server
+passwd
+
+aptitude install ufw
+ufw default deny
+ufw allow ssh/tcp
+ufw enable
+ufw allow 80
+
+
+adduser USERNAME
+echo "* Add this to the visudo file"
+echo "USERNAME   ALL=(ALL) ALL"
+
+
+# from the local deploy dir
+fab production initial_install
+
+# On the server create the database
+nano /etc/ssh/sshd_config
+# Set the following
+PermitRootLogin no
+PasswordAuthentication no
+# Update the ssh port and the firewall port if wanted
+# Restart ssh
+/etc/init.d/ssh reload
+# Create the db and user
+sudo -u postgres createuser DB_USER
+sudo -u postgres createdb -O DB_USER DB_NAME
+sudo /etc/init.d/postgresql-8.4 reload
+
+# from the local deploy dir
+fab production push
+
+#!/bin/sh
+
+echo "================================"
+echo "Do the Following Commands First "
+echo "They need to be run manually    "
+echo "================================"
+echo "passwd"
+echo "adduser USERNAME"
+echo "visudo"
+echo "* Add this to the visudo file"
+echo "gr   ALL=(ALL) ALL"
+echo "From you local machine: scp ~/.ssh/id_rsa* gr@SERVERNAME:/home/gr/."
+echo "\n"
+echo "**** Need to do something about the .pgpass file creation -- TODO"
+echo "Command will proceed in 5 seconds."
+echo "Press CTRL+C to abort and ."
+sleep 5
+echo "\n\n"

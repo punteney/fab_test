@@ -3,6 +3,7 @@ import time
 from fabric import state
 from fabric.api import run, sudo, cd, local
 from fabric.contrib.files import exists, append
+from warnings import warn
 
 
 class Machines(object):
@@ -187,7 +188,6 @@ class Server(object):
                 if not exists(new_file):
                     #No specific config file for the deployment env (prod, staging, etc) so use the general one
                     new_file = os.path.join(project_conf_dir, self.name, conf_file)
-                    print new_file
                 if exists(new_file):
                     conf_path = os.path.join(self.conf_files_path, conf_file)
                     if exists(conf_path):
@@ -200,6 +200,7 @@ class WebServer(Server):
         self.sites_enabled_path = sites_enabled_path
         self.default_site = default_site
         self.sites = sites
+
         super(WebServer, self).__init__(name, **kwargs)
 
     def site_config_dir(self):
@@ -207,6 +208,8 @@ class WebServer(Server):
 
     def enable_sites(self):
         for site in self.sites:
+            if site[-5:] != '.conf':
+                site = site + '.conf'
             if exists(os.path.join(self.site_config_dir(), site)):
                 self.disable_site(site) # Get rid of the old site if it exists
                 self.enable_site(site)
@@ -221,6 +224,11 @@ class WebServer(Server):
         if exists('%s/%s' % (self.sites_enabled_path, site)):
             sudo('rm %s/%s' % (self.sites_enabled_path, site))
 
+    def setup(self, *args, **kwargs):
+        super(WebServer, self).setup(*args, **kwargs)
+        self.enable_sites()
+        self.deactivate_default()
+
     def deactivate_default(self):
         # Deactivate the default site
         self.disable_site(self.default_site)
@@ -228,8 +236,9 @@ class WebServer(Server):
 class ApacheServer(WebServer):
     def __init__(self, name='apache', sites=[], 
             sites_enabled_path='/etc/apache2/sites-enabled', 
-            default_site='default', 
-            conf_files_path='/etc/apache2', 
+            default_site='000-default', 
+            conf_files_path='/etc/apache2',
+            conf_files = ['apache2.conf', 'ports.conf'], 
             packages=[
                 'apache2', 
                 'apache2.2-common', 
@@ -248,6 +257,7 @@ class ApacheServer(WebServer):
             default_site,
             sites,
             conf_files_path=conf_files_path,
+            conf_files=conf_files,
             packages=packages,
             restart_command=restart_command,
             start_command=start_command,
@@ -270,7 +280,8 @@ class NginxServer(WebServer):
             sites=[], 
             sites_enabled_path='/etc/nginx/sites-enabled', 
             default_site='default', 
-            conf_files_path='/etc/nginx', 
+            conf_files_path='/etc/nginx',
+            conf_files = ['nginx.conf'],
             packages=['nginx'],
             restart_command='/etc/init.d/nginx reload',
             start_command='/etc/init.d/nginx start', 
@@ -282,6 +293,7 @@ class NginxServer(WebServer):
             default_site,
             sites,
             conf_files_path=conf_files_path,
+            conf_files=conf_files,
             packages=packages,
             restart_command=restart_command,
             start_command=start_command,
