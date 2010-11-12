@@ -21,8 +21,10 @@ ufw allow 80
 
 
 adduser USERNAME
-echo "* Add this to the visudo file"
+visudo
 echo "USERNAME   ALL=(ALL) ALL"
+
+# Set the server in the FAB File
 
 
 # from the local deploy dir
@@ -43,6 +45,17 @@ sudo /etc/init.d/postgresql-8.4 reload
 
 # from the local deploy dir
 fab production push
+
+# Create django admin user on server
+cd to project dir
+./manage.py createsuperuser
+
+
+# END WORKING SITE
+
+
+
+
 
 #!/bin/sh
 
